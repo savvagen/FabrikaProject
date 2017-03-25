@@ -4,7 +4,7 @@
 <suite name="Test Suite">
     <parameter name="browserType" value="firefox"/>
 
-   <!-- <listeners>
+    <!--<listeners>
         <listener class-name="com.Fabrika.utilites.Listeners.TestListener"/>
     </listeners>-->
 
