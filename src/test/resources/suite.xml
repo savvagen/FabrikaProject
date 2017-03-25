@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Test Suite">
+    <parameter name="browserType" value="firefox"/>
+
+   <!-- <listeners>
+        <listener class-name="com.Fabrika.utilites.Listeners.TestListener"/>
+    </listeners>-->
+
+    <test name="tests">
+
+        <classes>
+            <class name="com.Fabrika.SmokeTests"/>
+        </classes>
+    </test>
+</suite>
