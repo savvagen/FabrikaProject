@@ -50,7 +50,7 @@ public class SmokeTests {
     @Parameters({"browserType"})
     public void setUpClass(@Optional String browserType) throws Exception {
         //this.driver = getDriver(getBrowserTypeByProperty());
-        this.driver = getBrowser("firefox", false);
+        this.driver = getBrowser(browserType, false);
         webDriver = new EventFiringWebDriver(driver);
         eventListener = new EventListener();
         webDriver.register(eventListener);
