@@ -5,6 +5,7 @@ import com.Fabrika.DataProviders.RegistrationData;
 import com.Fabrika.UiObjects.Pages.*;
 import com.Fabrika.UiObjects.Verifications;
 import com.Fabrika.UiObjects.Website;
+import com.Fabrika.utilites.Listeners.AllureListener;
 import com.Fabrika.utilites.Listeners.EventListener;
 import com.Fabrika.utilites.Listeners.TestListener;
 import org.openqa.selenium.WebDriver;
@@ -17,6 +18,16 @@ import ru.yandex.qatools.allure.annotations.Features;
 import ru.yandex.qatools.allure.annotations.Stories;
 import ru.yandex.qatools.allure.annotations.Title;
 
+
+
+import com.automation.remarks.video.annotations.Video;
+import com.automation.remarks.video.enums.RecorderType;
+import com.automation.remarks.video.enums.RecordingMode;
+import com.automation.remarks.video.enums.VideoSaveMode;
+import com.automation.remarks.video.recorder.VideoRecorder;
+
+
+import java.io.File;
 import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.TimeUnit;
 import static com.Fabrika.utilites.Browser.*;
@@ -25,7 +36,7 @@ import static org.testng.Assert.*;
 
 @Title("Smoke tests")
 @Description("Tests of main website functionality")
-@Listeners(TestListener.class)
+@Listeners(AllureListener.class)
 public class SmokeTests {
 
     public WebDriver driver;
@@ -43,6 +54,7 @@ public class SmokeTests {
     public static DescriptionPage descriptionPage;
     public static ContactPage contactPage;
     public static AboutPage aboutPage;
+    public static VideoRecorder recorder;
 
 
     @BeforeClass(alwaysRun = true)
@@ -64,6 +76,17 @@ public class SmokeTests {
         profilePage = new ProfilePage(webDriver);
         postPage = new PostPage(webDriver);
         homePage = new HomePage(webDriver);
+
+        // Default video folder is ${user.dir}/video. Could be changed by:
+        VideoRecorder.conf().withVideoFolder("video")
+                // Video could be disabled globally. Set to "true"
+                .videoEnabled(true)
+                .withRecorderType(RecorderType.FFMPEG)
+                // There is two recording modes ANNOTATED AND ALL
+                // Annotated is default and works only with methods annotated by @Video
+                .withRecordMode(RecordingMode.ANNOTATED)
+                .withVideoSaveMode(VideoSaveMode.ALL)
+                .withFrameRate(1);
     }
 
 
@@ -75,9 +98,10 @@ public class SmokeTests {
     }
 
 
-    @Title("Positive registration")
+    /*@Title("Positive registration")
     @Description("This is a test of registration")
     @Test(priority = 1)
+    @Video(name = "positive registration")
     public void registration() throws Exception{
        regPage.openPage();
        regPage.positiveRegistration(regPage.USER_FIRST_NAME, regPage.USER_LAST_NAME, regPage.USR_EMAIL, regPage.USER_PASSWORD, regPage.USER_PASSWORD, regPage.USER_NICKNAME);
@@ -91,18 +115,19 @@ public class SmokeTests {
         regPage.openPage();
         regPage.invalidRegistration(firstName, lastName, email, pass, rePass, nickname);
         website.validatePageError(regPage.REGISTRATION_PAGE_TITLE, regPage.errorMessageField, errorMessage);
-    }
+    }*/
 
     @Title("Positive login")
     @Description("Description")
     @Test(priority = 3)
+    @Video(name = "login test")
     public void login() throws Exception{
         loginPage.openPage();
         loginPage.login(loginPage.USR_EMAIL, loginPage.USER_PASSWORD);
         verifications.verifyLogin();
     }
 
-    @Title("Profile deleting")
+    /*@Title("Profile deleting")
     @Description("Description")
     @Test(priority = 4)
     public void deleteProfile() throws Exception{
@@ -164,7 +189,7 @@ public class SmokeTests {
         homePage.openPage();
         homePage.pressContacts();
         assertEquals(webDriver.getCurrentUrl(), contactPage.CONTACTS_PAGE_URL);
-    }
+    }*/
 
 
 
