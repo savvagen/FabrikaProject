@@ -45,7 +45,6 @@ public class SmokeTests {
     public static AboutPage aboutPage;
 
 
-
     @BeforeClass(alwaysRun = true)
     @Parameters({"browserType"})
     public void setUpClass(@Optional String browserType) throws Exception {
