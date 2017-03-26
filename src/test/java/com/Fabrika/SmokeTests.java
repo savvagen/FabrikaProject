@@ -20,6 +20,7 @@ import ru.yandex.qatools.allure.annotations.Title;
 import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.TimeUnit;
 import static com.Fabrika.utilites.Browser.*;
+import static org.testng.Assert.*;
 
 
 @Title("Smoke tests")
@@ -38,6 +39,10 @@ public class SmokeTests {
     public static ProfilePage profilePage;
     public static PostPage postPage;
     public static HomePage homePage;
+    public static TermsPage termsPage;
+    public static DescriptionPage descriptionPage;
+    public static ContactPage contactPage;
+    public static AboutPage aboutPage;
 
 
 
@@ -45,7 +50,7 @@ public class SmokeTests {
     @Parameters({"browserType"})
     public void setUpClass(@Optional String browserType) throws Exception {
         //this.driver = getDriver(getBrowserTypeByProperty());
-        this.driver = getBrowser(browserType, false);
+        this.driver = getBrowser("firefox", false);
         webDriver = new EventFiringWebDriver(driver);
         eventListener = new EventListener();
         webDriver.register(eventListener);
@@ -124,6 +129,42 @@ public class SmokeTests {
         loginPage.login(loginPage.USR_EMAIL, loginPage.USER_PASSWORD);
         homePage.deletePost(postPage.NEW_MESSAGE);
         verifications.verifyPostIsDeleted(postPage.NEW_MESSAGE);
+    }
+
+    @Title("Terms link checking")
+    @Description("Description")
+    @Test
+    public void pressTermsLink(){
+        homePage.openPage();
+        homePage.pressTerms();
+        assertEquals(webDriver.getCurrentUrl(), termsPage.TERMS_PAGE_URL);
+    }
+
+    @Title("About link checking")
+    @Description("Description")
+    @Test
+    public void pressAboutLink(){
+        homePage.openPage();
+        homePage.pressAbout();
+        assertEquals(webDriver.getCurrentUrl(), aboutPage.ABOUT_PAGE_URL);
+    }
+
+    @Title("Description Button checking")
+    @Description("Description")
+    @Test
+    public void pressDescriptionButton(){
+        homePage.openPage();
+        homePage.pressDescription();
+        assertEquals(webDriver.getCurrentUrl(), descriptionPage.DESCRIPTION_PAGE_URL);
+    }
+
+    @Title("Contacts link checking")
+    @Description("Description")
+    @Test
+    public void PresContactsLink(){
+        homePage.openPage();
+        homePage.pressContacts();
+        assertEquals(webDriver.getCurrentUrl(), contactPage.CONTACTS_PAGE_URL);
     }
 
 

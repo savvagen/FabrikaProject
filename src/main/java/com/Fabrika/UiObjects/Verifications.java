@@ -112,8 +112,9 @@ public class Verifications {
             List<WebElement> posts = homePage.postsTable.findElements(By.tagName("tr"));
             for (WebElement post: posts){
                 WebElement postTite = post.findElement(By.tagName("td"));
-                assert postTite.getText() != message;
+                assertTrue(postTite.getText() != message);
                 log.error("Post is deleted!!");
+                website.makeScreenshot();
             }
         } catch (Exception e){
             e.printStackTrace();

@@ -71,6 +71,7 @@ public class Website {
             makeScreenshot();
         }catch (Exception|AssertionError e){
             e.printStackTrace();
+            makeScreenshot();
         }
     }
 

@@ -144,7 +144,6 @@ public class EventListener implements WebDriverEventListener {
         } else {
             log.error("WebDriver error:", error);
         }
-
     }
 
     @Attachment
