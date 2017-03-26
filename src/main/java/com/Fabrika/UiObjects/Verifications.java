@@ -19,7 +19,6 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.*;
 import static org.testng.Assert.*;
 
 
-
 public class Verifications {
 
     public static EventFiringWebDriver webDriver;
