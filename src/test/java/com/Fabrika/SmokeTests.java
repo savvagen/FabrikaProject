@@ -56,7 +56,6 @@ public class SmokeTests {
         webDriver.manage().window().maximize();
         webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         webDriver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
-
         website = new Website(webDriver);
         regPage = new RegistrationPage(webDriver);
         verifications = new Verifications(webDriver);
