@@ -14,7 +14,7 @@ import java.net.URL;
 public class Browser {
 
     public static WebDriver driver;
-    public static final String driverPathLinux = "/drivers/";
+    public static final String driverPathLinux = "/home/savva/drivers/";
 
 
     public static WebDriver getBrowser(String browserType, boolean useGrid) throws Exception {

@@ -27,7 +27,7 @@
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
-            <version>3.0.1</version>
+            <version>3.3.1</version>
         </dependency>
         <dependency>
             <groupId>org.testng</groupId>
@@ -210,17 +210,6 @@
             <groupId>ru.yandex.qatools.htmlelements</groupId>
             <artifactId>htmlelements-java</artifactId>
             <version>1.17</version>
-        </dependency>
-        <!-- video-recorders -->
-        <dependency>
-            <groupId>com.automation-remarks</groupId>
-            <artifactId>video-recorder-testng</artifactId>
-            <version>1.4</version>
-        </dependency>
-        <dependency>
-            <groupId>com.automation-remarks</groupId>
-            <artifactId>video-recorder</artifactId>
-            <version>1.0.2</version>
         </dependency>
 
 
