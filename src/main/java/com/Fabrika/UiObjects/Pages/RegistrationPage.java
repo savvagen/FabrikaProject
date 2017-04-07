@@ -80,4 +80,9 @@ public class RegistrationPage {
         website.setElementText(nickNameField, nickName);
         website.clickElement(registrationButton);
     }
+
+    public void validateError(String errorMessage) throws Exception{
+        website.validatePageError(REGISTRATION_PAGE_TITLE, errorMessageField, errorMessage);
+    }
+
 }

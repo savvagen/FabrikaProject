@@ -40,7 +40,7 @@ public class SmokeTests extends BaseTest {
     public void invalidRegistration(String firstName, String lastName, String email, String pass, String rePass, String nickname, String errorMessage) throws Exception {
         regPage.openPage();
         regPage.invalidRegistration(firstName, lastName, email, pass, rePass, nickname);
-        website.validatePageError(regPage.REGISTRATION_PAGE_TITLE, regPage.errorMessageField, errorMessage);
+        regPage.validateError(errorMessage);
     }
 
     @Title("Positive login")
