@@ -5,6 +5,7 @@ import com.Fabrika.DataProviders.RegistrationData;
 import com.Fabrika.UiObjects.Pages.*;
 import com.Fabrika.UiObjects.Verifications;
 import com.Fabrika.UiObjects.Website;
+import com.Fabrika.utilites.BaseTest;
 import com.Fabrika.utilites.Listeners.EventListener;
 import com.Fabrika.utilites.Listeners.TestListener;
 import org.openqa.selenium.WebDriver;
@@ -21,53 +22,7 @@ import static org.testng.Assert.*;
 @Title("Smoke tests")
 @Description("Tests of main website functionality")
 @Listeners(TestListener.class)
-public class SmokeTests {
-
-    public WebDriver driver;
-    public WebDriverWait wait;
-    public com.Fabrika.utilites.Listeners.EventListener eventListener;
-    public EventFiringWebDriver webDriver;
-    public static Website website;
-    public static RegistrationPage regPage;
-    public static Verifications verifications;
-    public static LoginPage loginPage;
-    public static ProfilePage profilePage;
-    public static PostPage postPage;
-    public static HomePage homePage;
-    public static TermsPage termsPage;
-    public static DescriptionPage descriptionPage;
-    public static ContactPage contactPage;
-    public static AboutPage aboutPage;
-
-
-    @BeforeClass(alwaysRun = true)
-    @Parameters({"browserType"})
-    public void setUpClass(@Optional String browserType) throws Exception {
-        //this.driver = getDriver(getBrowserTypeByProperty());
-        this.driver = getBrowser("firefox", false);
-        webDriver = new EventFiringWebDriver(driver);
-        eventListener = new EventListener();
-        webDriver.register(eventListener);
-        webDriver.manage().window().maximize();
-        webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        webDriver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
-
-        website = new Website(webDriver);
-        regPage = new RegistrationPage(webDriver);
-        verifications = new Verifications(webDriver);
-        loginPage = new LoginPage(webDriver);
-        profilePage = new ProfilePage(webDriver);
-        postPage = new PostPage(webDriver);
-        homePage = new HomePage(webDriver);
-    }
-
-
-    @AfterClass(alwaysRun = true)
-    public void tearDown(){
-        if (webDriver != null){
-            webDriver.quit();
-        }
-    }
+public class SmokeTests extends BaseTest {
 
 
     @Title("Positive registration")
@@ -132,6 +87,7 @@ public class SmokeTests {
         homePage.openPage();
         homePage.pressTerms();
         assertEquals(webDriver.getCurrentUrl(), termsPage.TERMS_PAGE_URL);
+        assertEquals(webDriver.getTitle(), termsPage.TERMS_PAGE_TITLE);
     }
 
     @Title("About link checking")
@@ -141,6 +97,7 @@ public class SmokeTests {
         homePage.openPage();
         homePage.pressAbout();
         assertEquals(webDriver.getCurrentUrl(), aboutPage.ABOUT_PAGE_URL);
+        assertEquals(webDriver.getTitle(), aboutPage.ABOUT_PAGE_TITLE);
     }
 
     @Title("Description Button checking")
@@ -150,6 +107,7 @@ public class SmokeTests {
         homePage.openPage();
         homePage.pressDescription();
         assertEquals(webDriver.getCurrentUrl(), descriptionPage.DESCRIPTION_PAGE_URL);
+        assertEquals(webDriver.getTitle(), descriptionPage.DESCRIPTION_PAGE_TITLE);
     }
 
     @Title("Contacts link checking")
@@ -159,6 +117,7 @@ public class SmokeTests {
         homePage.openPage();
         homePage.pressContacts();
         assertEquals(webDriver.getCurrentUrl(), contactPage.CONTACTS_PAGE_URL);
+        assertEquals(webDriver.getTitle(), contactPage.CONTACTS_PAGE_TITLE);
     }
 
 
