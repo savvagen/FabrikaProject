@@ -19,6 +19,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import ru.yandex.qatools.allure.annotations.Attachment;
 import ru.yandex.qatools.allure.annotations.Step;
+
+import java.io.File;
 import java.util.List;
 import java.util.List;
 import java.util.Map;
@@ -60,6 +62,7 @@ public class Website {
     public byte[] makeScreenshot() {
         return ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.BYTES);
     }
+
 
     @Step("Load page - \"{0}\"")
     public void loadPage(String url, String title){
