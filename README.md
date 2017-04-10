@@ -15,4 +15,5 @@ To run this project , follow the instructions:
  The same [HtmlElements framework ]("https://github.com/savvagen/FabrikaProject-testng-htmlEmements") see in the link below.
  
  See how this project is running in Jenkins:
-[![demo](https://img.youtube.com/vi/73gdd168Hy4/0.jpg)](http://www.youtube.com/watch?v=73gdd168Hy4)
+ 
+[![demo](http://img.youtube.com/vi/73gdd168Hy4/0.jpg)](http://www.youtube.com/watch?v=73gdd168Hy4)
